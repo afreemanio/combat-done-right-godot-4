@@ -7,6 +7,6 @@ func _ready():
 	max_value = get_parent().hp_max
 
 func animate_hp_change(new_hp: int, old_hp: int = value):
-	$Tween.interpolate_property(self, "value", old_hp,
-			new_hp, 0.1, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0.025)
-	$Tween.start()
+	var	tween = get_tree().create_tween()
+	tween.tween_property(self, "value", new_hp, 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT).set_delay(0.025)
+	tween.play()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jrs1uui21uyq"]
 
-[ext_resource type="PackedScene" path="res://resources/entity/player/Player.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://resources/entity/enemy/EnemyBase.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://2cuqlu4tvngu" path="res://resources/entity/player/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cbybtk6xnw0v0" path="res://resources/entity/enemy/EnemyBase.tscn" id="2"]
 
 [node name="LevelBase" type="Node2D"]
 
@@ -13,3 +13,7 @@ defense = 5
 [node name="EnemyBase" parent="." instance=ExtResource("2")]
 texture_filter = 1
 position = Vector2(100.006, 41.6693)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(78, 43)
+zoom = Vector2(2, 2)

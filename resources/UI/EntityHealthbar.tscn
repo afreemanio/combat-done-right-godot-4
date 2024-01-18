@@ -1,22 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://17kdomc6yp7i"]
 
-[ext_resource path="res://resources/UI/healthbar_empty.png" type="Texture2D" id=1]
-[ext_resource path="res://resources/UI/healthbar_full.png" type="Texture2D" id=2]
-[ext_resource path="res://resources/UI/healthbar_border.png" type="Texture2D" id=3]
-[ext_resource path="res://resources/UI/EntityHealthbar.gd" type="Script" id=4]
+[ext_resource type="Texture2D" uid="uid://dsgynjhfg073t" path="res://resources/UI/healthbar_empty.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dc1ogituhurn1" path="res://resources/UI/healthbar_full.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://ddtl4rpyid8cd" path="res://resources/UI/healthbar_border.png" id="3"]
+[ext_resource type="Script" path="res://resources/UI/EntityHealthbar.gd" id="4"]
 
-[node name="EntityHealthbar" type="TextureProgressBar" groups=[
-"Healthbar",
-]]
+[node name="EntityHealthbar" type="TextureProgressBar" groups=["Healthbar"]]
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2( 0.7, 0.5 )
-texture_under = ExtResource( 1 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 2 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+scale = Vector2(0.7, 0.5)
+texture_under = ExtResource("1")
+texture_over = ExtResource("3")
+texture_progress = ExtResource("2")
+script = ExtResource("4")
 
 [node name="Tween" type="Tween" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+script = null
