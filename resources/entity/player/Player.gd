@@ -1,8 +1,8 @@
 extends "res://resources/entity/EntityBase.gd"
 
-export(PackedScene) var DAGGER: PackedScene = preload("res://resources/projectiles/PlayerDagger.tscn")
+@export var DAGGER: PackedScene = preload("res://resources/projectiles/PlayerDagger.tscn")
 
-onready var attackTimer = $AttackTimer
+@onready var attackTimer = $AttackTimer
 
 
 func _physics_process(delta):
@@ -26,7 +26,7 @@ func _physics_process(delta):
 
 func throw_dagger(dagger_direction: Vector2):
 	if DAGGER:
-		var dagger = DAGGER.instance()
+		var dagger = DAGGER.instantiate()
 		get_tree().current_scene.add_child(dagger)
 		dagger.global_position = self.global_position
 		

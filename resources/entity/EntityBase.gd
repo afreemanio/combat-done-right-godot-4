@@ -1,4 +1,5 @@
-extends KinematicBody2D
+class_name EntityBase
+extends CharacterBody2D
 
 signal hp_max_changed(new_hp_max)
 signal hp_changed(new_hp)
@@ -7,24 +8,24 @@ signal died
 const INDICATOR_DAMAGE = preload("res://resources/UI/DamageIndicator.tscn")
 
 
-export(int) var hp_max: int = 100 setget set_hp_max
-export(int) var hp: int = hp_max setget set_hp, get_hp
-export(int) var defense: int = 0
+@export var hp_max: int = 100: set = set_hp_max
+@export var hp: int = hp_max: get = get_hp, set = set_hp
+@export var defense: int = 0
 
-export(bool) var receives_knockback: bool = true
-export(float) var knockback_modifier: float = 0.1
+@export var receives_knockback: bool = true
+@export var knockback_modifier: float = 0.1
 
-export(int) var SPEED: int = 75
-var velocity: Vector2 = Vector2.ZERO
+@export var SPEED: int = 75
+# var velocity: Vector2 = Vector2.ZERO
 
-export(PackedScene) var EFFECT_HIT: PackedScene = null
-export(PackedScene) var EFFECT_DIED: PackedScene = null
+@export var EFFECT_HIT: PackedScene = null
+@export var EFFECT_DIED: PackedScene = null
 
-onready var sprite = $Sprite
-onready var collShape = $CollisionShape2D
-onready var animPlayer = $AnimationPlayer
-onready var hurtbox = $Hurtbox
-onready var healthBar = $EntityHealthbar
+@onready var sprite = $Sprite2D
+@onready var collShape = $CollisionShape2D
+@onready var animPlayer = $AnimationPlayer
+@onready var hurtbox = $Hurtbox
+@onready var healthBar = $EntityHealthbar
 
 
 func get_hp():
@@ -52,7 +53,9 @@ func _physics_process(delta):
 	move()
 
 func move():
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 func die():
 	spawn_effect(EFFECT_DIED)
@@ -90,7 +93,7 @@ func _on_EntityBase_died():
 
 func spawn_effect(EFFECT: PackedScene, effect_position: Vector2 = global_position):
 	if EFFECT:
-		var effect = EFFECT.instance()
+		var effect = EFFECT.instantiate()
 		get_tree().current_scene.add_child(effect)
 		effect.global_position = effect_position
 		return effect

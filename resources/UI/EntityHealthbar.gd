@@ -1,8 +1,8 @@
-extends TextureProgress
+extends TextureProgressBar
 
 
 func _ready():
-	yield(get_tree(), "idle_frame")
+	await get_tree().process_frame
 	value = get_parent().hp
 	max_value = get_parent().hp_max
 

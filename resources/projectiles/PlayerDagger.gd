@@ -1,6 +1,6 @@
 extends "res://resources/overlap/Hitbox.gd"
 
-export(int) var SPEED: int = 100
+@export var SPEED: int = 100
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
